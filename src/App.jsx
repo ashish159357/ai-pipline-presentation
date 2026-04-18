@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PipelineViewer from './components/PipelineViewer';
 import ArchitectureLayerViewer from './components/ArchitectureLayerViewer';
+import RoadmapViewer from './components/RoadmapViewer';
 import ParticleBackground from './components/ParticleBackground';
 import Legend from './components/Legend';
 import StepThroughMode from './components/StepThroughMode';
@@ -74,6 +75,7 @@ export default function App() {
                 {[
                   { id: 'pipeline', label: 'Pipeline', icon: '⚡' },
                   { id: 'architecture', label: 'Layers', icon: '🏗️' },
+                  { id: 'roadmap', label: 'Roadmap', icon: '🗺️' },
                 ].map((mode) => (
                   <motion.button
                     key={mode.id}
@@ -150,7 +152,7 @@ export default function App() {
       {/* Main content */}
       <main className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <AnimatePresence mode="wait">
-          {viewMode === 'pipeline' ? (
+          {viewMode === 'pipeline' && (
             <motion.div
               key="pipeline"
               initial={{ opacity: 0, y: 30 }}
@@ -165,7 +167,8 @@ export default function App() {
                 activeStep={stepMode ? currentStep : null}
               />
             </motion.div>
-          ) : (
+          )}
+          {viewMode === 'architecture' && (
             <motion.div
               key="architecture"
               initial={{ opacity: 0, y: 30 }}
@@ -174,6 +177,17 @@ export default function App() {
               transition={{ duration: 0.4 }}
             >
               <ArchitectureLayerViewer animationActive={animationActive} />
+            </motion.div>
+          )}
+          {viewMode === 'roadmap' && (
+            <motion.div
+              key="roadmap"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.4 }}
+            >
+              <RoadmapViewer />
             </motion.div>
           )}
         </AnimatePresence>

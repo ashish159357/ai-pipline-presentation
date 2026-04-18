@@ -54,8 +54,8 @@ export default function App() {
                 className="relative w-12 h-12"
               >
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 blur-md opacity-70" />
-                <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-xl font-black">
-                  C
+                <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-2xl">
+                  🤖
                 </div>
               </motion.div>
               <div>
